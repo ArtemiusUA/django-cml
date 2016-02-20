@@ -1,7 +1,7 @@
 import os
 from django.core.management.base import BaseCommand, CommandError
 from django.template.loader import render_to_string
-
+from django.conf import settings
 
 DEFAULT_FILE_NAME = 'cml_pipelines.py'
 

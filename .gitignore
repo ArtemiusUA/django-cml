@@ -2,3 +2,5 @@
 *.sqlite3
 .idea
 tmp
+dist
+django_cml.egg-info
