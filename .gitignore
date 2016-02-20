@@ -4,3 +4,4 @@
 tmp
 dist
 django_cml.egg-info
+build
