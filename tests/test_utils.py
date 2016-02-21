@@ -6,8 +6,8 @@ except ImportError:
     from xml.etree import ElementTree as ET
 from django.test import TestCase
 from django.conf import settings
-from .utils import ImportManager, ExportManager
-from .items import *
+from cml.utils import ImportManager, ExportManager
+from cml.items import *
 
 FIXTURES_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), 'tests_fixtures'))
 
@@ -15,7 +15,7 @@ FIXTURES_PATH = os.path.normpath(os.path.join(os.path.dirname(__file__), 'tests_
 class ImportManagerTestCase(TestCase):
 
     def setUp(self):
-        settings.CML_PROJECT_PIPELINES = 'cml.tests'
+        pass
 
     def test_run(self):
         man = ImportManager(os.path.join(FIXTURES_PATH, 'import.xml'))
@@ -26,7 +26,7 @@ class ImportManagerTestCase(TestCase):
 class ExportManagerTestCase(TestCase):
 
     def setUp(self):
-        settings.CML_PROJECT_PIPELINES = 'cml.tests'
+        pass
 
     def test_run(self):
         man = ExportManager()
