@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -
+from __future__ import absolute_import
 import os
+import six
+from six.moves import range
 try:
     from xml.etree import cElementTree as ET
 except ImportError:
@@ -50,11 +53,11 @@ class OrderPipeline(object):
         pass
 
     def yield_item(self):
-        for i in xrange(10):
+        for i in range(10):
             item = Order()
-            item.id = unicode(i)
-            item.number = unicode(i)
-            item.currency_name = unicode(i)
+            item.id = six.text_type(i)
+            item.number = six.text_type(i)
+            item.currency_name = six.text_type(i)
             item.date = datetime.now()
             item.currency_rate = Decimal(i)
             item.sum = Decimal(i)

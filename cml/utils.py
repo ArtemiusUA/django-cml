@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -
+from __future__ import absolute_import
 import os
 import logging
 import importlib
 from io import BytesIO
+import six
 try:
     from xml.etree import cElementTree as ET
 except ImportError:
@@ -268,7 +270,7 @@ class ExportManager(object):
         self.item_processor = ItemProcessor()
         self.root = ET.Element(u'КоммерческаяИнформация')
         self.root.set(u'ВерсияСхемы', '2.05')
-        self.root.set(u'ДатаФормирования', unicode(datetime.now().date()))
+        self.root.set(u'ДатаФормирования', six.text_type(datetime.now().date()))
 
     def get_xml(self):
         f = BytesIO()
@@ -282,39 +284,39 @@ class ExportManager(object):
     def export_orders(self):
         for order in self.item_processor.yield_item(Order):
             order_element = ET.SubElement(self.root, u'Документ')
-            ET.SubElement(order_element, u'Ид').text = unicode(order.id)
-            ET.SubElement(order_element, u'Номер').text = unicode(order.number)
-            ET.SubElement(order_element, u'Дата').text = unicode(order.date.strftime('%Y-%m-%d'))
-            ET.SubElement(order_element, u'Время').text = unicode(order.time.strftime('%H:%M:%S'))
-            ET.SubElement(order_element, u'ХозОперация').text = unicode(order.operation)
-            ET.SubElement(order_element, u'Роль').text = unicode(order.role)
-            ET.SubElement(order_element, u'Валюта').text = unicode(order.currency_name)
-            ET.SubElement(order_element, u'Курс').text = unicode(order.currency_rate)
-            ET.SubElement(order_element, u'Сумма').text = unicode(order.sum)
-            ET.SubElement(order_element, u'Комментарий').text = unicode(order.comment)
+            ET.SubElement(order_element, u'Ид').text = six.text_type(order.id)
+            ET.SubElement(order_element, u'Номер').text = six.text_type(order.number)
+            ET.SubElement(order_element, u'Дата').text = six.text_type(order.date.strftime('%Y-%m-%d'))
+            ET.SubElement(order_element, u'Время').text = six.text_type(order.time.strftime('%H:%M:%S'))
+            ET.SubElement(order_element, u'ХозОперация').text = six.text_type(order.operation)
+            ET.SubElement(order_element, u'Роль').text = six.text_type(order.role)
+            ET.SubElement(order_element, u'Валюта').text = six.text_type(order.currency_name)
+            ET.SubElement(order_element, u'Курс').text = six.text_type(order.currency_rate)
+            ET.SubElement(order_element, u'Сумма').text = six.text_type(order.sum)
+            ET.SubElement(order_element, u'Комментарий').text = six.text_type(order.comment)
             clients_element = ET.SubElement(order_element, u'Контрагенты')
             client_element = ET.SubElement(clients_element, u'Контрагент')
-            ET.SubElement(client_element, u'Ид').text = unicode(order.client.id)
-            ET.SubElement(client_element, u'Наименование').text = unicode(order.client.name)
-            ET.SubElement(client_element, u'Роль').text = unicode(order.client.role)
-            ET.SubElement(client_element, u'ПолноеНаименование').text = unicode(order.client.full_name)
-            ET.SubElement(client_element, u'Фамилия').text = unicode(order.client.last_name)
-            ET.SubElement(client_element, u'Имя').text = unicode(order.client.first_name)
+            ET.SubElement(client_element, u'Ид').text = six.text_type(order.client.id)
+            ET.SubElement(client_element, u'Наименование').text = six.text_type(order.client.name)
+            ET.SubElement(client_element, u'Роль').text = six.text_type(order.client.role)
+            ET.SubElement(client_element, u'ПолноеНаименование').text = six.text_type(order.client.full_name)
+            ET.SubElement(client_element, u'Фамилия').text = six.text_type(order.client.last_name)
+            ET.SubElement(client_element, u'Имя').text = six.text_type(order.client.first_name)
             address_element = ET.SubElement(clients_element, u'АдресРегистрации')
-            ET.SubElement(clients_element, u'Представление').text = unicode(order.client.address)
+            ET.SubElement(clients_element, u'Представление').text = six.text_type(order.client.address)
             products_element = ET.SubElement(order_element, u'Товары')
             for order_item in order.items:
                 product_element = ET.SubElement(products_element, u'Товар')
-                ET.SubElement(product_element, u'Ид').text = unicode(order_item.id)
-                ET.SubElement(product_element, u'Наименование').text = unicode(order_item.name)
+                ET.SubElement(product_element, u'Ид').text = six.text_type(order_item.id)
+                ET.SubElement(product_element, u'Наименование').text = six.text_type(order_item.name)
                 sku_element = ET.SubElement(product_element, u'БазоваяЕдиница ')
                 sku_element.set(u'Код', order_item.sku.id)
                 sku_element.set(u'НаименованиеПолное', order_item.sku.name_full)
                 sku_element.set(u'МеждународноеСокращение', order_item.sku.international_abbr)
                 sku_element.text = order_item.sku.name
-                ET.SubElement(product_element, u'ЦенаЗаЕдиницу').text = unicode(order_item.price)
-                ET.SubElement(product_element, u'Количество').text = unicode(order_item.quant)
-                ET.SubElement(product_element, u'Сумма').text = unicode(order_item.sum)
+                ET.SubElement(product_element, u'ЦенаЗаЕдиницу').text = six.text_type(order_item.price)
+                ET.SubElement(product_element, u'Количество').text = six.text_type(order_item.quant)
+                ET.SubElement(product_element, u'Сумма').text = six.text_type(order_item.sum)
 
     def flush(self):
         self.item_processor.flush_pipeline(Order)
