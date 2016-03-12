@@ -8,7 +8,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-cml',
-    version='0.3',
+    version='0.3.4',
     packages=['cml'],
     install_requires=['Django>=1.8', 'django-appconf>=1.0.1'],
     include_package_data=True,

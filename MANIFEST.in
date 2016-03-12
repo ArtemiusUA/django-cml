@@ -1,5 +1,6 @@
 include LICENSE
 include README.rst
-recursive-include cml/tests_fixtures *
+recursive-include cml/management *
 recursive-include cml/templates *
+recursive-include cml/migrations *
 recursive-include docs *
