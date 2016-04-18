@@ -257,7 +257,7 @@ class ImportManager(object):
                     order_item.items.append(order_item_item)
             additional_field_elements = order_element.find(u'ЗначенияРеквизитов/ЗначениеРеквизита')
             if additional_field_elements is not None:
-                for additional_field_element in additional_filed_elements:
+                for additional_field_element in additional_field_elements:
                     additional_field_item = AdditionalField(additional_field_element)
                     additional_field_item.name = self._get_cleaned_text(item_element.find(u'Наименование'))
                     additional_field_item.value = self._get_cleaned_text(item_element.find(u'Значение'))
