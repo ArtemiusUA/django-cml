@@ -1,6 +1,7 @@
 # https://www.djangosnippets.org/snippets/243/
 
 from __future__ import absolute_import
+import six
 import base64
 
 from django.http import HttpResponse
@@ -27,7 +28,10 @@ def view_or_basicauth(view, request, test_func, realm = "", *args, **kwargs):
             # NOTE: We are only support basic authentication for now.
             #
             if auth[0].lower() == "basic":
-                uname, passwd = base64.b64decode(auth[1]).split(':')
+                if six.PY2:
+                    uname, passwd = base64.b64decode(auth[1]).split(':')
+                else:
+                    uname, passwd = base64.b64decode(auth[1]).decode('utf-8').split(':')
                 user = authenticate(username=uname, password=passwd)
                 if user is not None:
                     if user.is_active:
