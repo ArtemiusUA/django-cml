@@ -10,7 +10,7 @@ setup(
     name='django-cml',
     version='0.3.4',
     packages=['cml'],
-    install_requires=['Django>=1.8', 'django-appconf>=1.0.1'],
+    install_requires=['Django>=1.8', 'django-appconf>=1.0.1', 'six>=1.12.0'],
     include_package_data=True,
     license='BSD License',
     description='App for data exchange in CommerceML 2 standard..',
