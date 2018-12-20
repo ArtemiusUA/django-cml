@@ -1,14 +1,10 @@
 from __future__ import absolute_import
-import os
-import logging
-from django.http import HttpResponse, Http404
+from django.http import Http404
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.uploadedfile import SimpleUploadedFile
-from .conf import settings
 from .auth import *
 from .utils import *
 from .models import *
-
 
 logger = logging.getLogger(__name__)
 

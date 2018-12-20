@@ -153,9 +153,3 @@ class Order(BaseItem):
         self.comment = u''
         self.items = []
         self.additional_fields = []
-
-
-
-
-
-
