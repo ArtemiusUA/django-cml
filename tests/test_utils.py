@@ -8,7 +8,6 @@ try:
 except ImportError:
     from xml.etree import ElementTree as ET
 from django.test import TestCase
-from django.conf import settings
 from cml.utils import ImportManager, ExportManager
 from cml.items import *
 

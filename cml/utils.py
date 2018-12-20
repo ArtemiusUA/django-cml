@@ -9,9 +9,6 @@ try:
     from xml.etree import cElementTree as ET
 except ImportError:
     from xml.etree import ElementTree as ET
-from decimal import Decimal
-from datetime import datetime
-from django.conf import settings
 from .items import *
 from .conf import settings
 
