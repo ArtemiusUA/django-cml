@@ -16,7 +16,7 @@ class Exchange(models.Model):
 
     exchange_type = models.CharField(max_length=50, choices=exchange_type_choices)
     timestamp = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     filename = models.CharField(max_length=200)
 
     @classmethod
