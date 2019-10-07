@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('exchange_type', models.CharField(max_length=50, choices=[(b'export', b'export'), (b'import', b'import')])),
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
                 ('filename', models.CharField(max_length=200)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
         ),
     ]
