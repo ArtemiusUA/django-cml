@@ -7,7 +7,7 @@ CML is a reusable Django app for data exchange in CommerceML 2 standard.
 Requirements
 ------------
 
-- Python 2.7, 3.3, 3.4, 3.5, 3.6
+- Python 3.3, 3.4, 3.5, 3.6
 - Django 2.x
 
 Quick start
