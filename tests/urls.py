@@ -1,5 +1,5 @@
-from django.conf.urls import include, url
+from django.conf.urls import include, re_path
 
 urlpatterns = [
-    url(r'^cml/', include('cml.urls')),
+    re_path(r'^cml/', include('cml.urls')),
 ]

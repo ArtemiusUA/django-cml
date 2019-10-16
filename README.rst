@@ -7,8 +7,8 @@ CML is a reusable Django app for data exchange in CommerceML 2 standard.
 Requirements
 ------------
 
-- Python 2.7, 3.3, 3.4, 3.5, 3.6
-- Django 1.8, 1.9, 1.10, 1.11
+- Python 3.3, 3.4, 3.5, 3.6
+- Django 2.x
 
 Quick start
 -----------
@@ -30,7 +30,7 @@ Add "cml" to your `INSTALLED_APPS` setting like this::
 
 Include the cml URLconf in your project `urls.py` like this::
 
-    url(r'^cml/', include('cml.urls')),
+    re_path(r'^cml/', include('cml.urls')),
 
 Run `python manage.py migrate` to create the cml models.
 
