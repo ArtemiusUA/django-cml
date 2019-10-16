@@ -30,7 +30,7 @@ Add "cml" to your `INSTALLED_APPS` setting like this::
 
 Include the cml URLconf in your project `urls.py` like this::
 
-    url(r'^cml/', include('cml.urls')),
+    re_path(r'^cml/', include('cml.urls')),
 
 Run `python manage.py migrate` to create the cml models.
 
